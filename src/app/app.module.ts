@@ -5,22 +5,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EquipmentComponent } from './equipment/equipment.component';
-import { UserComponent } from './user/user.component';
+import { UserService } from './user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EquipmentComponent,
-    UserComponent
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
