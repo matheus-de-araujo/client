@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UsersComponent } from './users/users.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UserService, HttpClientModule],
   bootstrap: [AppComponent]

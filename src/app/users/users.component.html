@@ -1,10 +1,10 @@
 <header>
 	<div class="row">
 		<div class="col-sm-6">
-			<h1>Cadastro de usuários</h1>
+			<h1>Listagem de usuários</h1>
 		</div>
 		<div class="col-sm-6 text-right h2">
-	   	<a class="btn btn-success" href="">Novo usuário</a>
+      <button type="button" class="btn btn-success" data-toggle="modal" (click)="clearModal()" data-target="#userModal">Novo Usuário</button>
 	  </div>
 	</div>
 </header>
@@ -25,10 +25,39 @@
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
         <td>
-          <button type="button" class="btn btn-warning mr-3">Editar</button>
-          <button type="button" class="btn btn-danger">Excluir</button>
+          <button type="button" (click)="getUser(user.id)" data-toggle="modal" data-target="#userModal" class="btn btn-warning mr-3">Editar</button>
+          <button type="button" (click)="deletarUsers(user.id)" class="btn btn-danger">Excluir</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="Modallabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="Modallabel">Modal de usuário</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="name" class="form-control" id="name" [(ngModel)]="user.name" name="name" placeholder="Digite o seu nome">
+          </div>
+          <div class="form-group">
+            <label for="email">Endereço de email</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" [(ngModel)]="user.email" name="email" placeholder="Digite o seu email">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal"#closeAddExpenseModal>Fechar</button>
+        <button type="button" (click)="adicionarUsers()" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
 </div>
