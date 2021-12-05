@@ -22,7 +22,7 @@ export class EquipmentsComponent implements OnInit {
     this.equipmentService.listarEquipments().subscribe(data => {
       this.equipments = data;
     }, err => {
-      console.log('Erro ao listar os usuários', err);
+      console.log('Erro ao listar os equipamentos', err);
     })
   }
 
@@ -33,7 +33,7 @@ export class EquipmentsComponent implements OnInit {
       document.getElementById('close')?.click();
       this.listarEquipments();
     }, err => {
-      console.log('Erro ao cadastrar o usuário', err);
+      console.log('Erro ao cadastrar o equipamento', err);
     })
   }
 
@@ -41,7 +41,7 @@ export class EquipmentsComponent implements OnInit {
     this.equipmentService.deletarEquipments(id).subscribe(data => {
       this.listarEquipments();
     }, err => {
-      console.log('Erro ao deletar o usuário', err);
+      console.log('Erro ao deletar o equipamento', err);
     })
   }
 
@@ -49,7 +49,7 @@ export class EquipmentsComponent implements OnInit {
     this.equipmentService.editarEquipments(this.equipment).subscribe(data => {
       this.listarEquipments();
     }, err => {
-      console.log('Erro ao editar o usuário', err);
+      console.log('Erro ao editar o equipamento', err);
     })
   }
 

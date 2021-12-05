@@ -11,12 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { EquipmentsComponent } from './equipments/equipments.component';
 import { UserService } from './services/user.service';
 import { EquipmentService } from './services/equipment.service';
+import { RoomsComponent } from './rooms/rooms.component';
+import { RoomService } from './services/room.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    EquipmentsComponent
+    EquipmentsComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { EquipmentService } from './services/equipment.service';
   providers: [
     UserService,
     EquipmentService,
+    RoomService,
     HttpClientModule
   ],
   bootstrap: [AppComponent]
