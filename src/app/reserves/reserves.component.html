@@ -1,1 +1,63 @@
-<p>reserves works!</p>
+<header>
+	<div class="row">
+		<div class="col-sm-6">
+			<h1>Listagem de reservas</h1>
+		</div>
+		<div class="col-sm-6 text-right h2">
+      <button type="button" class="btn btn-success" data-toggle="modal" (click)="clearModal()" data-target="#reserveModal">Nova reserva</button>
+	  </div>
+	</div>
+</header>
+
+<div class="row mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Data da reserva</th>
+        <th scope="col">Usuário responsável</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reserve of reserves">
+        <th scope="col">{{ reserve.id }}</th>
+        <td>{{ reserve.booking_date }}</td>
+        <td>{{ reserve.user }}</td>
+        <td>
+          <button type="button" (click)="getReserve(reserve.id)" data-toggle="modal" data-target="#reserveModal" class="btn btn-warning mr-3">Editar</button>
+          <button type="button" (click)="deletarReserves(reserve.id)" class="btn btn-danger">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="reserveModal" tabindex="-1" role="dialog" aria-labelledby="Modallabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="Modallabel">Modal de reservas</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="model">Data da reserva</label>
+            <input type="model" class="form-control" id="model" [(ngModel)]="reserve.booking_date" name="booking_date" placeholder="Digite a data da reserva">
+          </div>
+          <div class="form-group">
+            <label for="name">Usuário responsável</label>
+            <input type="name" class="form-control" id="name" [(ngModel)]="reserve.user" name="user" placeholder="Qual o usuário responsável">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" (click)="adicionarReserves()" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

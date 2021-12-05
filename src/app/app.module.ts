@@ -18,7 +18,7 @@ import { MaterialService } from './services/material.service';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryService } from './services/category.service';
 import { ReservesComponent } from './reserves/reserves.component';
-import { ReserveService } from './reserve.service';
+import { ReserveService } from './services/reserve.service';
 
 @NgModule({
   declarations: [

@@ -29,7 +29,7 @@ const routes: Routes = [
     component: CategoriesComponent
   },
   {
-    path:"/",
+    path:"",
     component: ReservesComponent
   }
 ];
