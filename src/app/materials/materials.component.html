@@ -1,10 +1,10 @@
 <header>
 	<div class="row">
 		<div class="col-sm-6">
-			<h1>Listagem de salas de aula</h1>
+			<h1>Listagem de materiais</h1>
 		</div>
 		<div class="col-sm-6 text-right h2">
-      <button type="button" class="btn btn-success" data-toggle="modal" (click)="clearModal()" data-target="#materialModal">Nova sala</button>
+      <button type="button" class="btn btn-success" data-toggle="modal" (click)="clearModal()" data-target="#materialModal">Novo material</button>
 	  </div>
 	</div>
 </header>
@@ -14,8 +14,8 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Número da sala</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Quantidade disponíveis</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
@@ -37,7 +37,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="Modallabel">Modal de salas de aula</h4>
+        <h4 class="modal-title" id="Modallabel">Modal de materiais</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -45,12 +45,12 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="model">Tipo da sala</label>
-            <input type="model" class="form-control" id="model" [(ngModel)]="material.name" name="name" placeholder="Digite o tipo da sala">
+            <label for="model">Nome</label>
+            <input type="model" class="form-control" id="model" [(ngModel)]="material.name" name="name" placeholder="Digite o nome do material">
           </div>
           <div class="form-group">
-            <label for="name">Número da sala</label>
-            <input type="name" class="form-control" id="name" [(ngModel)]="material.total_qty" name="total_qty" placeholder="Digite o número da sala">
+            <label for="name">Quantidade disponíveis</label>
+            <input type="name" class="form-control" id="name" [(ngModel)]="material.total_qty" name="total_qty" placeholder="Digite a quantidade disponível">
           </div>
         </form>
       </div>

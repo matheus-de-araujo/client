@@ -22,7 +22,7 @@ export class MaterialsComponent implements OnInit {
     this.materialService.listarMaterials().subscribe(data => {
       this.materials = data;
     }, err => {
-      console.log('Erro ao listar as salas', err);
+      console.log('Erro ao listar os materiais', err);
     })
   }
 
@@ -33,7 +33,7 @@ export class MaterialsComponent implements OnInit {
       document.getElementById('close')?.click();
       this.listarMaterials();
     }, err => {
-      console.log('Erro ao cadastrar a sala', err);
+      console.log('Erro ao cadastrar o material', err);
     })
   }
 
@@ -41,7 +41,7 @@ export class MaterialsComponent implements OnInit {
     this.materialService.deletarMaterials(id).subscribe(data => {
       this.listarMaterials();
     }, err => {
-      console.log('Erro ao deletar a sala', err);
+      console.log('Erro ao deletar o material', err);
     })
   }
 
@@ -49,7 +49,7 @@ export class MaterialsComponent implements OnInit {
     this.materialService.editarMaterials(this.material).subscribe(data => {
       this.listarMaterials();
     }, err => {
-      console.log('Erro ao editar a sala', err);
+      console.log('Erro ao editar o material', err);
     })
   }
 
