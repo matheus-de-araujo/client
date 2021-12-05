@@ -9,11 +9,13 @@ import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
 import { FormsModule } from '@angular/forms';
+import { EquipmentsComponent } from './equipments/equipments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    EquipmentsComponent
   ],
   imports: [
     BrowserModule,
