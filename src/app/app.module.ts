@@ -13,13 +13,16 @@ import { UserService } from './services/user.service';
 import { EquipmentService } from './services/equipment.service';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomService } from './services/room.service';
+import { MaterialsComponent } from './materials/materials.component';
+import { MaterialService } from './services/material.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     EquipmentsComponent,
-    RoomsComponent
+    RoomsComponent,
+    MaterialsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { RoomService } from './services/room.service';
     UserService,
     EquipmentService,
     RoomService,
+    MaterialService,
     HttpClientModule
   ],
   bootstrap: [AppComponent]

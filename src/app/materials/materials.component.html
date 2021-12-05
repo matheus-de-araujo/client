@@ -1,0 +1,63 @@
+<header>
+	<div class="row">
+		<div class="col-sm-6">
+			<h1>Listagem de salas de aula</h1>
+		</div>
+		<div class="col-sm-6 text-right h2">
+      <button type="button" class="btn btn-success" data-toggle="modal" (click)="clearModal()" data-target="#materialModal">Nova sala</button>
+	  </div>
+	</div>
+</header>
+
+<div class="row mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Número da sala</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let material of materials">
+        <th scope="col">{{ material.id }}</th>
+        <td>{{ material.name }}</td>
+        <td>{{ material.total_qty }}</td>
+        <td>
+          <button type="button" (click)="getMaterial(material.id)" data-toggle="modal" data-target="#materialModal" class="btn btn-warning mr-3">Editar</button>
+          <button type="button" (click)="deletarMaterials(material.id)" class="btn btn-danger">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="materialModal" tabindex="-1" role="dialog" aria-labelledby="Modallabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="Modallabel">Modal de salas de aula</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="model">Tipo da sala</label>
+            <input type="model" class="form-control" id="model" [(ngModel)]="material.name" name="name" placeholder="Digite o tipo da sala">
+          </div>
+          <div class="form-group">
+            <label for="name">Número da sala</label>
+            <input type="name" class="form-control" id="name" [(ngModel)]="material.total_qty" name="total_qty" placeholder="Digite o número da sala">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" (click)="adicionarMaterials()" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
