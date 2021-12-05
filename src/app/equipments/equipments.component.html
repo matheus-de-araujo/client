@@ -1,1 +1,63 @@
-<p>equipments works!</p>
+<header>
+	<div class="row">
+		<div class="col-sm-6">
+			<h1>Listagem de Equipamentos</h1>
+		</div>
+		<div class="col-sm-6 text-right h2">
+      <button type="button" class="btn btn-success" data-toggle="modal" (click)="clearModal()" data-target="#equipmentModal">Novo Usuário</button>
+	  </div>
+	</div>
+</header>
+
+<div class="row mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let equipment of equipments">
+        <th scope="col">{{ equipment.id }}</th>
+        <td>{{ equipment.name }}</td>
+        <td>{{ equipment.model }}</td>
+        <td>
+          <button type="button" (click)="getEquipment(equipment.id)" data-toggle="modal" data-target="#equipmentModal" class="btn btn-warning mr-3">Editar</button>
+          <button type="button" (click)="deletarEquipments(equipment.id)" class="btn btn-danger">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="equipmentModal" tabindex="-1" role="dialog" aria-labelledby="Modallabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="Modallabel">Modal de usuário</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="name" class="form-control" id="name" [(ngModel)]="equipment.name" name="name" placeholder="Digite o seu nome">
+          </div>
+          <div class="form-group">
+            <label for="model">Endereço de model</label>
+            <input type="model" class="form-control" id="model" aria-describedby="modelHelp" [(ngModel)]="equipment.model" name="model" placeholder="Digite o seu model">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal"#closeAddExpenseModal>Fechar</button>
+        <button type="button" (click)="adicionarEquipments()" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
