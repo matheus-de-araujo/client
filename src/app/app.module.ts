@@ -15,6 +15,8 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { RoomService } from './services/room.service';
 import { MaterialsComponent } from './materials/materials.component';
 import { MaterialService } from './services/material.service';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoryService } from './services/category.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { MaterialService } from './services/material.service';
     UsersComponent,
     EquipmentsComponent,
     RoomsComponent,
-    MaterialsComponent
+    MaterialsComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { MaterialService } from './services/material.service';
     EquipmentService,
     RoomService,
     MaterialService,
+    CategoryService,
     HttpClientModule
   ],
   bootstrap: [AppComponent]
