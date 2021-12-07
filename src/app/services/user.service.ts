@@ -14,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   listarUsers(): Observable<any>{
-    return this.http.get(environment.api + "users");
+    return this.http.get(environment.api + "users/list");
   }
 
   adicionarUsers(user: UserModel): Observable<any>{

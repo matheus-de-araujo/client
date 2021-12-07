@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
 
   listarUsers(){
     this.userService.listarUsers().subscribe(data => {
-      this.users = data._embedded.users;
+      this.users = data;
     }, err => {
       console.log('Erro ao listar os usuários', err);
     })

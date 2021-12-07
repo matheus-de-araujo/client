@@ -71,9 +71,13 @@
               <option *ngFor="let equipment of equipments" value="{{ equipment.id }}">{{ equipment.name }}</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="name">Usuário responsável</label>
-            <input type="name" class="form-control" id="name" [(ngModel)]="reserve.user" name="user" placeholder="Qual o usuário responsável">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Usuário responsável</label>
+            </div>
+            <select class="custom-select" [(ngModel)]="reserve.user" name="user">
+              <option *ngFor="let user of users" value="{{ user.id }}">{{ user.name }}</option>
+            </select>
           </div>
         </form>
       </div>

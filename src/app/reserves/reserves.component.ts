@@ -3,6 +3,7 @@ import { ReserveService } from '../services/reserve.service';
 import { ReserveModel } from './reserves.model';
 import { EquipmentService } from '../services/equipment.service';
 import { TimeModel } from './time.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-reserves',
@@ -13,10 +14,13 @@ export class ReservesComponent implements OnInit {
 
   reserve: ReserveModel = new ReserveModel();
   time: TimeModel = new TimeModel();
-  equipments: Array<any> = new Array();
   reserves: Array<any> = new Array();
 
-  constructor(private reserveService: ReserveService, private equipmentService: EquipmentService) { }
+
+  equipments: Array<any> = new Array();
+  users: Array<any> = new Array();
+
+  constructor(private reserveService: ReserveService, private equipmentService: EquipmentService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.listarReserves();
@@ -66,6 +70,7 @@ export class ReservesComponent implements OnInit {
   prepareModal(){
     this.reserve = new ReserveModel();
     this.ListEquipment();
+    this.ListUsers()
   }
 
   ListEquipment(){
@@ -73,6 +78,14 @@ export class ReservesComponent implements OnInit {
       this.equipments = data;
     }, err => {
       console.log('Erro ao listar os equipamentos', err);
+    })
+  }
+
+  ListUsers(){
+    this.userService.listarUsers().subscribe(data => {
+      this.users =  data;
+    }, err => {
+      console.log('Erro ao listar os usuários', err);
     })
   }
 
