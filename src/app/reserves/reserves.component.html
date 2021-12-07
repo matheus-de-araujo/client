@@ -4,7 +4,7 @@
 			<h1>Listagem de reservas</h1>
 		</div>
 		<div class="col-sm-6 text-right h2">
-      <button type="button" class="btn btn-success" data-toggle="modal" (click)="clearModal()" data-target="#reserveModal">Nova reserva</button>
+      <button type="button" class="btn btn-success" data-toggle="modal" (click)="prepareModal()" data-target="#reserveModal">Nova reserva</button>
 	  </div>
 	</div>
 </header>
@@ -46,7 +46,30 @@
         <form>
           <div class="form-group">
             <label for="model">Data da reserva</label>
-            <input type="model" class="form-control" id="model" [(ngModel)]="reserve.booking_date" name="booking_date" placeholder="Digite a data da reserva">
+            <input type="model" type="date" class="form-control" [(ngModel)]="time.booking_date" name="booking_date" placeholder="Digite a data da reserva">
+          </div>
+          <div class="form-group">
+            <label for="model">Hora da reserva</label>
+            <input type="model" type="time" class="form-control" [(ngModel)]="time.booking_hour" name="booking_hour" placeholder="Digite a data da reserva">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Opções</label>
+            </div>
+            <select class="custom-select">
+              <option selected>Escolha...</option>
+              <option value="1">Material</option>
+              <option value="2">Sala</option>
+              <option value="3">Equipamento</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Equipamentos</label>
+            </div>
+            <select class="custom-select" [(ngModel)]="reserve.equipment" name="equipment">
+              <option *ngFor="let equipment of equipments" value="{{ equipment.id }}">{{ equipment.name }}</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="name">Usuário responsável</label>

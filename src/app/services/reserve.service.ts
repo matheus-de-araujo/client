@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ReserveModel } from '../reserves/reserves.model';
+import { TimeModel } from '../reserves/time.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class ReserveService {
     return this.http.get(environment.api + "reserves/list");
   }
 
-  adicionarReserves(reserve: ReserveModel): Observable<any>{
-    return this.http.post(environment.api + "reserves/add", reserve);
+  adicionarReservesToEquipment(reserve: ReserveModel, time: TimeModel): Observable<any>{
+    return this.http.put(environment.api + "equipments/"+ reserve.equipment +"/user/" + reserve.user, time);
   }
 
   editarReserves(reserve: ReserveModel): Observable<any>{

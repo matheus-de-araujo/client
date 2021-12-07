@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReserveService } from '../services/reserve.service';
 import { ReserveModel } from './reserves.model';
+import { EquipmentService } from '../services/equipment.service';
+import { TimeModel } from './time.model';
 
 @Component({
   selector: 'app-reserves',
@@ -10,9 +12,11 @@ import { ReserveModel } from './reserves.model';
 export class ReservesComponent implements OnInit {
 
   reserve: ReserveModel = new ReserveModel();
+  time: TimeModel = new TimeModel();
+  equipments: Array<any> = new Array();
   reserves: Array<any> = new Array();
 
-  constructor(private reserveService: ReserveService) { }
+  constructor(private reserveService: ReserveService, private equipmentService: EquipmentService) { }
 
   ngOnInit(): void {
     this.listarReserves();
@@ -27,13 +31,15 @@ export class ReservesComponent implements OnInit {
   }
 
   adicionarReserves(){
-    console.log(this.reserve);
-    this.reserveService.adicionarReserves(this.reserve).subscribe(data => {
+    this.reserveService.adicionarReservesToEquipment(this.reserve, this.time).subscribe(data => {
       this.reserve = new ReserveModel();
       document.getElementById('close')?.click();
       this.listarReserves();
     }, err => {
+      debugger
       console.log('Erro ao cadastrar a reserva', err);
+      alert(err.error);
+      document.getElementById('close')?.click();
     })
   }
 
@@ -57,8 +63,17 @@ export class ReservesComponent implements OnInit {
     this.reserve = this.reserves.find(element => element.id === id)
   }
 
-  clearModal(){
+  prepareModal(){
     this.reserve = new ReserveModel();
+    this.ListEquipment();
+  }
+
+  ListEquipment(){
+    this.equipmentService.listarEquipments().subscribe(data => {
+      this.equipments = data;
+    }, err => {
+      console.log('Erro ao listar os equipamentos', err);
+    })
   }
 
 }
