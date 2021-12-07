@@ -19,6 +19,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategoryService } from './services/category.service';
 import { ReservesComponent } from './reserves/reserves.component';
 import { ReserveService } from './services/reserve.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ReserveService } from './services/reserve.service';
     BrowserAnimationsModule,
     MatSliderModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [
     UserService,

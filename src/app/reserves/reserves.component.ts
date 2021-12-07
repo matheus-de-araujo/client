@@ -4,6 +4,8 @@ import { ReserveModel } from './reserves.model';
 import { EquipmentService } from '../services/equipment.service';
 import { TimeModel } from './time.model';
 import { UserService } from '../services/user.service';
+import { MaterialService } from '../services/material.service';
+import { RoomService } from '../services/room.service';
 
 @Component({
   selector: 'app-reserves',
@@ -18,9 +20,17 @@ export class ReservesComponent implements OnInit {
 
 
   equipments: Array<any> = new Array();
+  materials: Array<any> = new Array();
+  rooms: Array<any> = new Array();
   users: Array<any> = new Array();
 
-  constructor(private reserveService: ReserveService, private equipmentService: EquipmentService, private userService: UserService) { }
+  constructor(
+    private reserveService: ReserveService,
+    private equipmentService: EquipmentService,
+    private userService: UserService,
+    private materialService: MaterialService,
+    private roomService: RoomService
+  ) { }
 
   ngOnInit(): void {
     this.listarReserves();
@@ -71,6 +81,8 @@ export class ReservesComponent implements OnInit {
     this.reserve = new ReserveModel();
     this.ListEquipment();
     this.ListUsers()
+    this.listarRooms()
+    this.listarMaterials()
   }
 
   ListEquipment(){
@@ -86,6 +98,22 @@ export class ReservesComponent implements OnInit {
       this.users =  data;
     }, err => {
       console.log('Erro ao listar os usuários', err);
+    })
+  }
+
+  listarRooms(){
+    this.roomService.listarRooms().subscribe(data => {
+      this.rooms = data;
+    }, err => {
+      console.log('Erro ao listar as salas', err);
+    })
+  }
+
+  listarMaterials(){
+    this.materialService.listarMaterials().subscribe(data => {
+      this.materials = data;
+    }, err => {
+      console.log('Erro ao listar os materiais', err);
     })
   }
 

@@ -56,14 +56,14 @@
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect01">Opções</label>
             </div>
-            <select class="custom-select">
-              <option selected>Escolha...</option>
-              <option value="1">Material</option>
-              <option value="2">Sala</option>
-              <option value="3">Equipamento</option>
+            <select class="custom-select" [(ngModel)]="reserve.option" name="option">
+              <option value="0" selected>Escolha...</option>
+              <option value="1">Equipamento</option>
+              <option value="2">Material</option>
+              <option value="3">Sala</option>
             </select>
           </div>
-          <div class="input-group mb-3">
+          <div class="input-group mb-3" *ngIf="reserve.option == '1'">
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect01">Equipamentos</label>
             </div>
@@ -71,9 +71,25 @@
               <option *ngFor="let equipment of equipments" value="{{ equipment.id }}">{{ equipment.name }}</option>
             </select>
           </div>
+          <div class="input-group mb-3" *ngIf="reserve.option == '2'">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Materiais</label>
+            </div>
+            <select class="custom-select" [(ngModel)]="reserve.material" name="material">
+              <option *ngFor="let material of materials" value="{{ material.id }}">{{ material.name }}</option>
+            </select>
+          </div>
+          <div class="input-group mb-3" *ngIf="reserve.option == '3'">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Salas</label>
+            </div>
+            <select class="custom-select" [(ngModel)]="reserve.room" name="room">
+              <option *ngFor="let room of rooms" value="{{ room.id }}">{{ room.type }}</option>
+            </select>
+          </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Usuário responsável</label>
+              <label class="input-group-text" for="inputGroupSelect01">Usuário</label>
             </div>
             <select class="custom-select" [(ngModel)]="reserve.user" name="user">
               <option *ngFor="let user of users" value="{{ user.id }}">{{ user.name }}</option>

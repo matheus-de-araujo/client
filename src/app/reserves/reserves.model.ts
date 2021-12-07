@@ -6,4 +6,7 @@ export class ReserveModel{
   booking_hour!: Time;
   user: string = '';
   equipment: string = '';
+  material: string = '';
+  room: string = '';
+  option: string = '';
 }
